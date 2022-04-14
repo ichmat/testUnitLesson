@@ -27,7 +27,7 @@ class RickAndMortyGestion{
     }
 
     public function findCart(){
-        return $this->cartRepository->findAll()[0];
+        return $this->cartRepository->findAll();
     }
 
     public function findById(int $id){

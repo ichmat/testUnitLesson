@@ -14,7 +14,7 @@ class DataFixturesTest extends KernelTestCase
         exec("php bin/console doctrine:migration:migrate -n --env=test");
     }
 
-    public function testFixutresV2()
+    public function testFixturesV2()
     {
         $appFixtures = self::getContainer()->get(AppFixtures::class);
         $objectManager = self::getContainer()->get(EntityManagerInterface::class);

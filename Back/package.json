@@ -22,6 +22,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "encore": "^0.0.30-beta"
+        "encore": "^0.0.30-beta",
+        "yarn": "^1.22.18"
     }
 }
