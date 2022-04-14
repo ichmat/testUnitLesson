@@ -43,7 +43,7 @@ class ApiTest extends WebTestCase
         $client->jsonRequest('POST', '/api/cart/'.$mydata['id'], ['quantity' => 1]);
         $client->jsonRequest('GET', '/api/cart');
         $responseData = json_decode($client->getResponse()->getContent(), true);
-        $this->assertEquals($mydata, $responseData['0']['products']['0']);
+        $this->assertEquals($mydata, $responseData['products']['0']);
 
         $client->jsonRequest('POST', '/api/cart/'.$mydata['id'], ['quantity' => 1000]);
         $responseData = json_decode($client->getResponse()->getContent(), true);
@@ -52,7 +52,7 @@ class ApiTest extends WebTestCase
         $client->jsonRequest('DELETE', '/api/cart/'.$mydata['id']);
         $client->jsonRequest('GET', '/api/cart');
         $responseData = json_decode($client->getResponse()->getContent(), true);
-        $this->assertEquals([], $responseData[0]['products']);
+        $this->assertEquals([], $responseData['products']);
     }
 
     public function testAddAndDeleteProduct() : void 

@@ -5,14 +5,15 @@ const Cart = ({ setRoute }: { setRoute: (data: any) => void }) => {
   const { loading, products, message, loadCart, removeToCart } = useCart();
   return (
     <div>
-      {loading && <div>Loading....</div>}
-      {message && <p>{message}</p>}
       <div onClick={() => setRoute({ route: "home" })}>Retour</div>
-      <div>
-        {products.map((product) => {
+      {message && <p>{message}</p>}
+      {loading && <div>Loading....</div>}
+      {!loading && <div>Votre pannier</div>}
+      <div key={1}>
+        {products && products.map((product) => {
           return (
             <React.Fragment>
-              <div>
+              <div className="product">
                 <img src={product.image} alt="" />
                 <p>Figurine de {product.name}</p>
                 <p>Quantitée {product.quantity}</p>
@@ -24,6 +25,13 @@ const Cart = ({ setRoute }: { setRoute: (data: any) => void }) => {
             </React.Fragment>
           );
         })}
+        {!products && (
+          <React.Fragment>
+          <div>
+            <p>Aucun produits</p>
+          </div>
+        </React.Fragment>
+        )}
       </div>
     </div>
   );

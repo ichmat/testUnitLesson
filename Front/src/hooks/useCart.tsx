@@ -13,6 +13,7 @@ const useCart = () => {
         .then((res) => {
           setLoading(false);
           setProducts(res.products);
+          console.log(res);
           resolve(true);
         });
     });

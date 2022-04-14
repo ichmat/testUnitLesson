@@ -12,7 +12,7 @@ const Product = ({ setRoute, data: product }: any) => {
       <div>
         <div>
           <img src={product.image} alt="" />
-          <p>Figurine de {product.name}</p>
+          <p className="productName">Figurine de {product.name}</p>
           <p>Quantitée {product.quantity}</p>
         </div>
       </div>

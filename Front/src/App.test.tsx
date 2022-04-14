@@ -1,9 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders learn react link', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  await waitFor(() => !screen.getByText(/Loading..../i));
+  const linkElement = screen.getByText(/Aller sur panier/i);
   expect(linkElement).toBeInTheDocument();
 });
