@@ -1,0 +1,38 @@
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout 🛎️
+          uses: actions/checkout@master
+
+        - name: Run cypress tests ▶
+          uses: cypress-io/github-action@v2
+          with:
+            start: |
+              cd Front
+              npm start
+            wait-on: 'http://localhost:3000'
+            config: baseUrl=https://localhost:3000
+
+        - name: React Test ⚙ (npm ci, build and test)
+          run: |
+            cd Front
+            npm ci
+            npm run build --if-present
+            npm test    
+
+        - name: Init Composer for test 🔧 
+          uses: php-actions/composer@v5
+          with: 
+            start: cd Back
+
+        - name: Run phpunit tests ▶ 
+          uses: php-actions/phpunit@v3
+          with: 
+            start: cd Back
+       
