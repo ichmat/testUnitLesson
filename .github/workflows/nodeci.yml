@@ -11,9 +11,9 @@ jobs:
           uses: actions/checkout@master
 
         - name: Run cypress tests ▶
-          working-directory: ./Front
           uses: cypress-io/github-action@v2
           with:
+            working-directory: ./Front
             start: |
               npm start
             wait-on: 'http://localhost:3000'
@@ -27,11 +27,13 @@ jobs:
             npm test    
 
         - name: Init Composer for test 🔧 
-          working-directory: ./Back
           uses: php-actions/composer@v5
+          with: 
+            working-directory: ./Back
 
         - name: Run phpunit tests ▶ 
-          working-directory: ./Back
           uses: php-actions/phpunit@v3
+          with: 
+            working-directory: ./Back
           
        
