@@ -10,10 +10,8 @@ jobs:
         - name: Checkout 🛎️
           uses: actions/checkout@master
 
-        - name: Go to Front ↪
-          run: cd Front
-
         - name: Run cypress tests ▶
+          working-directory: ./Front
           uses: cypress-io/github-action@v2
           with:
             start: |
@@ -22,21 +20,18 @@ jobs:
             config: baseUrl=https://localhost:3000
 
         - name: React Test ⚙ (npm ci, build and test)
+          working-directory: ./Front
           run: |
             npm ci
             npm run build --if-present
             npm test    
 
-        - name: Go to Back ↪
-          run: |
-            cd ..
-            cd Back
-
         - name: Init Composer for test 🔧 
+          working-directory: ./Back
           uses: php-actions/composer@v5
 
         - name: Run phpunit tests ▶ 
+          working-directory: ./Back
           uses: php-actions/phpunit@v3
-          with: 
-            start: cd Back
+          
        
