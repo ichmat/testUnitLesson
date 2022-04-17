@@ -13,7 +13,7 @@ jobs:
         - name: Init Composer for test 🔧 
           uses: php-actions/composer@v5
           with: 
-            working-directory: ./Back
+            working_dir: ./Back
 
         - name: Run phpunit tests ▶ 
           uses: php-actions/phpunit@v3
