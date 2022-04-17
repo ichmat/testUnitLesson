@@ -10,6 +10,16 @@ jobs:
         - name: Checkout 🛎️
           uses: actions/checkout@master
 
+        - name: Init Composer for test 🔧 
+          uses: php-actions/composer@v5
+          with: 
+            working-directory: ./Back
+
+        - name: Run phpunit tests ▶ 
+          uses: php-actions/phpunit@v3
+          with: 
+            working-directory: ./Back
+
         - name: Run cypress tests ▶
           uses: cypress-io/github-action@v2
           with:
@@ -26,14 +36,6 @@ jobs:
             npm run build --if-present
             npm test    
 
-        - name: Init Composer for test 🔧 
-          uses: php-actions/composer@v5
-          with: 
-            working-directory: ./Back
-
-        - name: Run phpunit tests ▶ 
-          uses: php-actions/phpunit@v3
-          with: 
-            working-directory: ./Back
+        
           
        
